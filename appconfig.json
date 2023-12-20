@@ -1,0 +1,17 @@
+{
+  "port": 8025,
+  "database": {
+    "user": "postgres",
+    "host": "localhost",
+    "database": "movie_rating",
+    "password": "postgres",
+    "port": 5432
+  },
+
+  "admin": {
+    "username": "admin",
+    "password": "$2a$10$JiK5Vfl34Dc9lAWY9Y/p.OP5QbQ.LgVE5taX1LoVF43bM.wA8/kEu"
+  },
+
+  "fileUploadPath": "uploads/"
+}
