@@ -11,7 +11,11 @@ export class MovieService {
     const movieList = (await db.getConnection().query(sql, [])).rows[0];
     return movieList ? (toCamelKeys(movieList) as any) : [];
   }
-
+  async getMovieListById(id: number) {
+    const sql = `SELECT * FROM movies.movie_list where id = $1`;
+    const movieList = (await db.getConnection().query(sql, [id])).rows[0];
+    return movieList ? (toCamelKeys(movieList) as any) : [];
+  }
   async updateMovieRating(id: number) {
     const sql = `SELECT * FROM movies.movie_list where id = $1`;
     const MovieList = (await db.getConnection().query(sql, [id])).rows[0];

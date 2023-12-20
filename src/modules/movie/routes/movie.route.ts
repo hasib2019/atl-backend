@@ -17,6 +17,19 @@ router.get(
   })
 );
 
+router.get(
+  "/get-movie-list/:id",
+  wrap(async (req: Request, res: Response, next: NextFunction) => {
+    const movieService: MovieService = Container.get(MovieService);
+    const movieId = Number(req.params.id);
+    const result = await movieService.getMovieListById(movieId);
+    return res.status(200).json({
+      message: "Request Successful",
+      data: result,
+    });
+  })
+);
+
 router.put(
   "/get-movie-list/:id",
   wrap(async (req: Request, res: Response, next: NextFunction) => {
