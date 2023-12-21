@@ -1,0 +1,36 @@
+-- SEQUENCE: movies.movie_list_id_seq
+
+-- DROP SEQUENCE IF EXISTS movies.movie_list_id_seq;
+
+CREATE SEQUENCE IF NOT EXISTS movies.movie_list_id_seq
+    INCREMENT 1
+    START 1
+    MINVALUE 1
+    MAXVALUE 12300
+    CACHE 1;
+
+ALTER SEQUENCE movies.movie_list_id_seq
+    OWNER TO postgres;
+
+
+
+--------------------table script------------------------
+-- Table: movies.movie_list
+
+-- DROP TABLE IF EXISTS movies.movie_list;
+
+CREATE TABLE IF NOT EXISTS movies.movie_list
+(
+    id integer NOT NULL DEFAULT nextval('movies.movie_list_id_seq'::regclass),
+    movie_title character varying COLLATE pg_catalog."default",
+    description text COLLATE pg_catalog."default",
+    youtube_link character varying COLLATE pg_catalog."default",
+    rating bigint,
+    status boolean,
+    CONSTRAINT movie_list_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS movies.movie_list
+    OWNER to postgres;
